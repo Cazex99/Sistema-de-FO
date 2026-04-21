@@ -56,5 +56,19 @@ Arquivos necessários:
 Você pode utilizar quaisquer imagens, desde que mantenha esses nomes.
 Caso altere os nomes dos arquivos, será necessário atualizar as referências no código.
 
+##  Banco de Dados
+
+O sistema utiliza SQLite no ambiente de desenvolvimento.
+
+Ao iniciar a aplicação, o banco de dados é criado automaticamente na pasta:
+
+```id="dbyo3r"
+instance/
+```
+
+Essa pasta é utilizada pelo Flask para armazenar arquivos locais da aplicação.
+
+Para ambiente de produção, é recomendado utilizar PostgreSQL.
+
 
 
