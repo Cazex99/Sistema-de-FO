@@ -12,7 +12,7 @@ User=avaliacao
 WorkingDirectory=/home/avaliacao/avaliacao_militar
 
 Environment="PYTHONUNBUFFERED=1"
-Environment="DATABASE_URL=postgresql://avaliacao_user:123456@localhost/avaliacao"
+Environment="DATABASE_URL=postgresql://avaliacao_user:*******@localhost/avaliacao"
 Environment="PATH=/home/avaliacao/.local/bin:/usr/bin:/bin"
 
 ExecStart=/home/avaliacao/.local/bin/gunicorn \
