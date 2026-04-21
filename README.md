@@ -38,4 +38,23 @@ Exemplos de configuração para ambiente de produção estão disponíveis na pa
 
 Os arquivos são genéricos e devem ser ajustados conforme o ambiente.
 
+##  Imagens
+
+As imagens não estão incluídas neste repositório.
+
+Para o funcionamento correto da interface, adicione os seguintes arquivos na pasta:
+
+```
+static/imagens/
+```
+
+Arquivos necessários:
+
+* `logo.png`
+* `fundo.jpg`
+
+Você pode utilizar quaisquer imagens, desde que mantenha esses nomes.
+Caso altere os nomes dos arquivos, será necessário atualizar as referências no código.
+
+
 
