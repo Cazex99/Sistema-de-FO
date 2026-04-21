@@ -29,4 +29,13 @@ A aplicação segue uma arquitetura em camadas:
 
 O projeto foi inicialmente desenvolvido com SQLite e posteriormente migrado para PostgreSQL.
 
+##  Deploy
+
+Exemplos de configuração para ambiente de produção estão disponíveis na pasta `deploy/`, incluindo:
+
+- Gunicorn (WSGI server)
+- Nginx (reverse proxy)
+
+Os arquivos são genéricos e devem ser ajustados conforme o ambiente.
+
 
