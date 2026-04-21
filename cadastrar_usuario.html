@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastrar Usuário - QUARTEL</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #eef3f8;
+            margin: 0;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(90deg, #0a3d62, #1e6fa3);
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .header img {
+            height: 70px;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .header-text div {
+            font-size: 14px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #0a3d62;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #f8fbff;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #1e6fa3;
+            box-shadow: 0 0 5px rgba(30,111,163,0.3);
+        }
+
+        /* BOTÃO */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            background-color: #0a3d62;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #1e6fa3;
+        }
+
+        /* VOLTAR */
+        .voltar {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0a3d62;
+            font-weight: bold;
+        }
+
+        .voltar:hover {
+            text-decoration: underline;
+        }
+
+        /* RODAPÉ */
+        .rodape {
+            text-align: center;
+            margin-top: 40px;
+            color: #555;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="{{ url_for('static', filename='imagens/logo.png') }}">
+
+    <div class="header-text">
+        <h1>QUARTEL</h1>
+        <div>Cadastro de Usuário</div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Cadastrar Novo Usuário</h2>
+
+    <form method="POST">
+
+        <label>Usuário</label>
+        <input type="text" name="usuario" required>
+
+        <label>Senha</label>
+        <input type="password" name="senha" required>
+
+        <label>Perfil</label>
+        <select name="perfil">
+            <option value="avaliador">Avaliador</option>
+            <option value="admin">Administrador</option>
+        </select>
+
+        <button type="submit">Cadastrar Usuário</button>
+
+    </form>
+
+    <a href="/dashboard" class="voltar">← Voltar ao Painel</a>
+</div>
+
+<div class="rodape">
+    QUARTEL - Sistema FO Digital
+</div>
+
+</body>
+</html>

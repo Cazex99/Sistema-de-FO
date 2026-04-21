@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Avaliação - QUARTEL</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #eef3f8;
+            margin: 0;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(90deg, #0a3d62, #1e6fa3);
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .header img {
+            height: 70px;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .header-text div {
+            font-size: 14px;
+        }
+
+        /* CONTAINER */
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 40px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0a3d62;
+        }
+
+        .info {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* OPÇÕES */
+        .opcoes {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .opcoes input {
+            display: none;
+        }
+
+        .opcoes label {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            border: 2px solid #ccc;
+            transition: 0.2s;
+        }
+
+        .fo-mais {
+            background-color: #d4edda;
+        }
+
+        .neutro {
+            background-color: #e2e3e5;
+        }
+
+        .fo-menos {
+            background-color: #f8d7da;
+        }
+
+        .opcoes input:checked + label {
+            border: 2px solid #0a3d62;
+            transform: scale(1.05);
+        }
+
+        /* DESCRIÇÃO */
+        .descricao-box {
+            display: none;
+            margin-top: 20px;
+        }
+
+        textarea, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #f8fbff;
+        }
+
+        textarea:focus, input:focus {
+            outline: none;
+            border-color: #1e6fa3;
+            box-shadow: 0 0 5px rgba(30,111,163,0.3);
+        }
+
+        /* BOTÃO */
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #0a3d62;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #1e6fa3;
+        }
+
+        /* VOLTAR */
+        .voltar {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #0a3d62;
+        }
+
+        .voltar:hover {
+            text-decoration: underline;
+        }
+
+        /* RODAPÉ */
+        .rodape {
+            text-align: center;
+            margin-top: 40px;
+            color: #555;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="{{ url_for('static', filename='imagens/logo.png') }}">
+
+    <div class="header-text">
+        <h1>QUARTEL</h1>
+        <div>Avaliação Individual</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <h2>Avaliação Militar</h2>
+
+    <div class="info">
+        {{ militar.posto }} - {{ militar.nome }} - {{ militar.pelotao }}
+    </div>
+
+    <form method="POST">
+
+        <div class="opcoes">
+
+            <input type="radio" name="resultado" value="FO+" id="r1" required onchange="mostrarDescricao()">
+            <label for="r1" class="fo-mais">FO+</label>
+
+            <input type="radio" name="resultado" value="NEUTRO" id="r2" onchange="mostrarDescricao()">
+            <label for="r2" class="neutro">FO NEUTRO</label>
+
+            <input type="radio" name="resultado" value="FO-" id="r3" onchange="mostrarDescricao()">
+            <label for="r3" class="fo-menos">FO-</label>
+
+        </div>
+
+        <div class="descricao-box" id="descricaoBox">
+
+            <label>Descreva o motivo da avaliação</label>
+            <textarea name="descricao" rows="4"></textarea>
+
+            <label>Data do fato</label>
+            <input type="date" name="data_ocorrido">
+
+        </div>
+
+        <button type="submit">Salvar Avaliação</button>
+
+    </form>
+
+    <a href="{{ url_for('dashboard') }}" class="voltar">← Voltar</a>
+
+</div>
+
+<div class="rodape">
+    QUARTEL - Sistema FO Digital
+</div>
+
+<script>
+function mostrarDescricao() {
+
+    const radios = document.getElementsByName("resultado");
+    const box = document.getElementById("descricaoBox");
+    const textarea = document.querySelector("textarea");
+    const data = document.querySelector("input[type='date']");
+
+    for (let radio of radios) {
+        if (radio.checked) {
+            box.style.display = "block";
+            textarea.required = true;
+            data.required = true;
+            return;
+        }
+    }
+
+    box.style.display = "none";
+    textarea.required = false;
+    data.required = false;
+}
+</script>
+
+</body>
+</html>
