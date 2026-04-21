@@ -1,1 +1,29 @@
+[Unit]
+Description=Performance Evaluation System
+After=network.target
 
+[Service]
+User=appuser
+WorkingDirectory=/path/to/project
+
+Environment="PYTHONUNBUFFERED=1"
+Environment="DATABASE_URL=postgresql://user:password@localhost/db"
+
+ExecStart=/usr/bin/gunicorn \
+--chdir /path/to/project \
+--bind 127.0.0.1:8000 \
+--workers 2 \
+--threads 4 \
+--worker-class gthread \
+--timeout 60 \
+--keep-alive 10 \
+--max-requests 500 \
+--max-requests-jitter 100 \
+--preload \
+app:app
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
